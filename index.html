@@ -199,7 +199,7 @@ footer{background:var(--night);color:#a8988a;padding:56px 0 30px;font-size:14px}
 <!-- NAV -->
 <div class="nav-wrap">
   <nav class="nav">
-    <a href="/" class="brand"><span class="logo">🛡️</span> Ma Vigi</a>
+    <a href="/" class="brand"><span class="logo" id="navLogo">🛡️</span> Ma Vigi</a>
     <div class="nav-links">
       <a href="#dangers">Dangers</a>
       <a href="#fonctions">Fonctionnalités</a>
@@ -361,14 +361,14 @@ footer{background:var(--night);color:#a8988a;padding:56px 0 30px;font-size:14px}
       <h2>Rejoignez Ma Vigi</h2>
       <p>L'application arrive bientôt sur Android et iOS. Soyez parmi les premiers à veiller.</p>
       <div class="stores">
-        <span class="store">
+        <a class="store" id="store-android" href="#telecharger" style="pointer-events:none">
           <svg viewBox="0 0 24 24"><path d="M3 3v18l15-9L3 3z"/></svg>
-          <span><small>BIENTÔT SUR</small><b>Google Play</b></span>
-        </span>
-        <span class="store">
+          <span><small id="store-android-label">BIENTÔT SUR</small><b>Google Play</b></span>
+        </a>
+        <a class="store" id="store-ios" href="#telecharger" style="pointer-events:none">
           <svg viewBox="0 0 24 24"><path d="M16.5 1c-1.3.1-2.8.9-3.7 2-0.8.9-1.5 2.3-1.2 3.6 1.4.1 2.8-.7 3.6-1.8.8-1 1.4-2.4 1.3-3.8zM21 17.3c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.4-4.1 3.4-1.5 0-1.9-1-4-1-2 0-2.5 1-4 1-1.7 0-3-1.7-4-3.2C-1 16-1.4 9.6 1.9 6.6c1-1 2.4-1.6 3.7-1.6 1.5 0 2.5 1 3.8 1 1.2 0 1.9-1 3.8-1 1.1 0 2.3.6 3.2 1.6-2.8 1.5-2.3 5.5.6 6.7z"/></svg>
-          <span><small>BIENTÔT SUR</small><b>App Store</b></span>
-        </span>
+          <span><small id="store-ios-label">BIENTÔT SUR</small><b>App Store</b></span>
+        </a>
       </div>
     </div>
   </div>
@@ -379,7 +379,7 @@ footer{background:var(--night);color:#a8988a;padding:56px 0 30px;font-size:14px}
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand"><span class="logo">🛡️</span> Ma Vigi</div>
+        <div class="foot-brand"><span class="logo" id="footLogo">🛡️</span> Ma Vigi</div>
         <p>Le réseau citoyen de vigilance en Côte d'Ivoire. Signalez les dangers, protégez votre communauté. Une application éditée par EGSCI SARL.</p>
       </div>
       <div class="foot-col">
@@ -404,5 +404,23 @@ footer{background:var(--night);color:#a8988a;padding:56px 0 30px;font-size:14px}
   </div>
 </footer>
 
+<script>
+// Charge le logo + liens stores configurés depuis l'admin EGSCI
+(function(){
+  var API='https://admin.evostudio.fr/api/shop/mavigi';
+  function setLogo(el,url){ if(!el||!url) return; el.innerHTML='<img src="'+url+'" alt="Ma Vigi" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">'; }
+  function setStore(id,label,url){
+    var a=document.getElementById(id), lab=document.getElementById(label);
+    if(!a) return;
+    if(url){ a.href=url; a.target='_blank'; a.rel='noopener'; a.style.pointerEvents='auto'; if(lab) lab.textContent='DISPONIBLE SUR'; }
+  }
+  fetch(API,{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+    if(!d) return;
+    if(d.logo){ setLogo(document.getElementById('navLogo'),d.logo); setLogo(document.getElementById('footLogo'),d.logo); }
+    setStore('store-android','store-android-label',d.android);
+    setStore('store-ios','store-ios-label',d.ios);
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>
