@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ma Vigi — Réseau citoyen de vigilance · Côte d'Ivoire</title>
+<meta name="description" content="Ma Vigi est l'application mobile de signalement de dangers en Côte d'Ivoire : cambriolages, agressions, incendies, accidents. Alertez votre communauté en temps réel et restez en sécurité." />
+<meta name="keywords" content="Ma Vigi, sécurité Côte d'Ivoire, signalement danger, application alerte Abidjan, vigilance citoyenne, sécurité Abidjan, numéros urgence Côte d'Ivoire" />
+<meta name="author" content="EGSCI SARL" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#f77f00" />
+<link rel="canonical" href="https://mavigi.egs.ci/" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ma Vigi" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:title" content="Ma Vigi — Réseau citoyen de vigilance · Côte d'Ivoire" />
+<meta property="og:description" content="Signalez les dangers en temps réel et protégez votre communauté. L'app de vigilance citoyenne en Côte d'Ivoire." />
+<meta property="og:url" content="https://mavigi.egs.ci/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ma Vigi — Réseau citoyen de vigilance" />
+<meta name="twitter:description" content="Signalez les dangers en temps réel et protégez votre communauté en Côte d'Ivoire." />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"Ma Vigi","operatingSystem":"Android, iOS","applicationCategory":"LifestyleApplication","description":"Application de signalement de dangers et de vigilance citoyenne en Côte d'Ivoire.","inLanguage":"fr-FR","author":{"@type":"Organization","name":"EGSCI SARL","url":"https://egs.ci/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"XOF"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --orange:#f77f00;--orange-dk:#d46a00;--orange-soft:#fff4e6;--orange-dim:#ffe0b8;
+  --green:#009a44;--green-dk:#007a36;--green-soft:#e8f5ed;
+  --red:#e53935;
+  --ink:#1a1a2e;--slate:#6b7280;--slate-2:#9aa0aa;
+  --line:#f0ece6;
+  --bg:#fff8f0;--bg2:#ffffff;--bg3:#fffaf3;
+  --night:#161210;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:'Sora','Inter',sans-serif}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;padding:13px 24px;cursor:pointer;border:none;transition:.2s;font-family:inherit;white-space:nowrap;border-radius:12px}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:var(--orange-dk);box-shadow:0 12px 28px rgba(247,127,0,.34);transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--ink);font-weight:700}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.2)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{background:rgba(255,255,255,.18)}
+
+/* NAV */
+.nav-wrap{position:sticky;top:14px;z-index:100;padding:0 24px;pointer-events:none}
+.nav{max-width:1060px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+  border:1px solid #f3e7d6;border-radius:18px;padding:9px 12px 9px 18px;gap:16px;pointer-events:all;box-shadow:0 8px 28px rgba(22,18,16,.08)}
+.brand{display:flex;align-items:center;gap:9px;font-family:'Sora';font-weight:800;font-size:18px;color:var(--ink)}
+.brand .logo{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--orange),var(--orange-dk));display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 4px 12px rgba(247,127,0,.35)}
+.nav-links{display:flex;gap:2px;align-items:center}
+.nav-links a{color:#7a6a58;font-weight:500;font-size:13.5px;padding:9px 14px;border-radius:10px;transition:.15s}
+.nav-links a:hover{color:var(--ink);background:#fbf1e4}
+.nav-cta{display:flex;gap:8px;align-items:center}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;padding:6px;color:var(--ink)}
+.nav-burger svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.drawer{display:none;position:fixed;inset:0;z-index:200}
+.drawer.open{display:block}
+.drawer-bg{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.drawer-panel{position:absolute;top:0;right:0;bottom:0;width:270px;background:var(--night);padding:26px 22px;display:flex;flex-direction:column;gap:4px}
+.drawer-panel a{color:rgba(255,255,255,.78);font-size:15px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.drawer-panel .btn{margin-top:16px;justify-content:center}
+.drawer-close{align-self:flex-end;background:none;border:none;color:#9aa6a0;cursor:pointer;padding:4px}
+.drawer-close svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+@media(max-width:880px){.nav-links{display:none}.nav-cta .btn-white{display:none}.nav-burger{display:block}}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:128px 0 90px;margin-top:-72px;
+  background:radial-gradient(800px 480px at 78% 0,rgba(247,127,0,.22),transparent 58%),linear-gradient(165deg,#161210 52%,#2a1606 100%)}
+.hero:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(700px 420px at 30% 20%,#000,transparent 72%);pointer-events:none}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;background:rgba(247,127,0,.14);border:1px solid rgba(247,127,0,.35);color:#ffb866;font-size:12.5px;font-weight:600;padding:8px 15px;border-radius:999px;margin-bottom:24px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(247,127,0,.5)}70%{box-shadow:0 0 0 9px rgba(247,127,0,0)}100%{box-shadow:0 0 0 0 rgba(247,127,0,0)}}
+.hero h1{color:#fff;font-size:52px;line-height:1.06;font-weight:800;letter-spacing:-1.6px;margin-bottom:20px}
+.hero h1 .hl{background:linear-gradient(120deg,#ffd089,#f77f00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p.sub{color:#c9b9a8;font-size:18px;max-width:520px;margin-bottom:32px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.hero-trust{display:flex;gap:20px;flex-wrap:wrap;color:#a8988a;font-size:13px}
+.hero-trust b{color:#fff}
+@media(max-width:880px){.hero{padding:112px 0 70px}.hero .wrap{grid-template-columns:1fr;gap:48px}.hero h1{font-size:38px}}
+
+/* Phone mockup */
+.phone-stage{display:flex;justify-content:center;position:relative}
+.phone-stage:before{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(247,127,0,.3),transparent 64%);top:50%;left:50%;transform:translate(-50%,-50%)}
+.phone{position:relative;z-index:2;width:280px;height:580px;background:#0b1220;border-radius:44px;padding:11px;box-shadow:0 50px 100px rgba(0,0,0,.5),inset 0 0 0 2px rgba(255,255,255,.06)}
+.phone .screen{width:100%;height:100%;border-radius:34px;overflow:hidden;position:relative;background:var(--bg);display:flex;flex-direction:column}
+.phone .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:126px;height:27px;background:#0b1220;border-radius:0 0 16px 16px;z-index:5}
+.mv-top{background:linear-gradient(135deg,var(--orange),var(--orange-dk));color:#fff;padding:40px 18px 16px;flex-shrink:0}
+.mv-top .t{font-family:'Sora';font-weight:800;font-size:17px;display:flex;align-items:center;gap:7px}
+.mv-top .s{font-size:11px;opacity:.92;margin-top:2px}
+.mv-map{flex:1;position:relative;background:
+  linear-gradient(rgba(0,154,68,.05),rgba(0,154,68,.05)),
+  repeating-linear-gradient(0deg,#eef5ef 0 1px,transparent 1px 32px),
+  repeating-linear-gradient(90deg,#eef5ef 0 1px,transparent 1px 32px),#f4f9f5;overflow:hidden}
+.mv-road{position:absolute;background:#e2e8e3}
+.pin{position:absolute;width:28px;height:28px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 4px 10px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center}
+.pin i{transform:rotate(45deg);font-style:normal;font-size:13px}
+.pin.r{background:var(--red)}.pin.o{background:var(--orange)}.pin.y{background:#ffa726}
+.pin.pulse:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--red);opacity:.5;animation:ping 1.8s infinite}
+@keyframes ping{0%{transform:scale(.7);opacity:.6}100%{transform:scale(1.9);opacity:0}}
+.mv-card{position:absolute;left:12px;right:12px;bottom:66px;background:#fff;border-radius:16px;padding:13px;box-shadow:0 14px 34px rgba(22,18,16,.2);z-index:4}
+.mv-card .hd{display:flex;align-items:center;gap:9px}
+.mv-card .ico{width:36px;height:36px;border-radius:10px;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-size:18px}
+.mv-card .ti{font-weight:800;font-size:13px}
+.mv-card .me{font-size:10.5px;color:var(--slate-2)}
+.mv-card .bar{height:1px;background:#f0f0f0;margin:10px 0}
+.mv-card .row{display:flex;justify-content:space-between;font-size:10.5px;color:var(--slate)}
+.mv-tab{height:56px;background:#fff;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-around;flex-shrink:0}
+.mv-tab .tb{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9px;color:#c2c8c3}
+.mv-tab .tb.on{color:var(--orange)}
+.mv-tab .tb .d{width:21px;height:21px;border-radius:7px;background:currentColor;opacity:.85}
+.mv-fab{position:absolute;bottom:78px;left:50%;transform:translateX(-50%);width:56px;height:56px;border-radius:50%;background:var(--red);box-shadow:0 10px 26px rgba(229,57,53,.5);display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;z-index:6;border:4px solid var(--bg)}
+
+/* SECTION */
+section{padding:92px 0}
+.sec-head{max-width:680px;margin:0 auto 56px;text-align:center}
+.kicker{display:inline-block;color:var(--orange-dk);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin-bottom:13px}
+.sec-head h2{font-size:42px;font-weight:800;letter-spacing:-1.3px;line-height:1.1;margin-bottom:14px}
+.sec-head p{color:var(--slate);font-size:18px}
+@media(max-width:880px){section{padding:68px 0}.sec-head h2{font-size:31px}}
+
+/* DANGERS */
+.danger-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.danger{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:26px 20px;text-align:center;transition:.2s}
+.danger:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(22,18,16,.1)}
+.danger .em{font-size:34px;margin-bottom:12px}
+.danger h4{font-size:17px;font-weight:750;margin-bottom:5px}
+.danger p{color:var(--slate);font-size:13px}
+@media(max-width:880px){.danger-grid{grid-template-columns:1fr 1fr}}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feat{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:30px 26px;transition:.2s}
+.feat:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(22,18,16,.09)}
+.feat .ic{width:54px;height:54px;border-radius:15px;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:16px}
+.feat h4{font-size:19px;font-weight:750;margin-bottom:9px;font-family:'Sora'}
+.feat p{color:var(--slate);font-size:14.5px}
+@media(max-width:880px){.feat-grid{grid-template-columns:1fr}}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+.step{text-align:center;padding:0 12px}
+.step .n{width:56px;height:56px;margin:0 auto 18px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange-dk));color:#fff;font-family:'Sora';font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(247,127,0,.32)}
+.step h4{font-size:19px;font-weight:750;margin-bottom:9px}
+.step p{color:var(--slate);font-size:14.5px}
+@media(max-width:880px){.steps{grid-template-columns:1fr;gap:34px}}
+
+/* URGENCE */
+.urg{background:linear-gradient(150deg,var(--night),#2a1606);border-radius:26px;padding:48px;color:#fff}
+.urg h3{font-size:26px;font-weight:800;margin-bottom:8px}
+.urg p{color:#c9b9a8;font-size:15px;margin-bottom:28px}
+.urg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.urg-num{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px 18px;text-align:center}
+.urg-num b{display:block;font-family:'Sora';font-size:32px;font-weight:800;color:#ffb866;line-height:1}
+.urg-num span{color:#a8988a;font-size:13px;margin-top:7px;display:block}
+@media(max-width:880px){.urg{padding:34px 24px}.urg-grid{grid-template-columns:1fr 1fr}}
+
+/* DOWNLOAD CTA */
+.dl-band{background:linear-gradient(120deg,var(--orange),var(--orange-dk));border-radius:28px;padding:60px 48px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.dl-band:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(540px 320px at 50% 0,#000,transparent 70%)}
+.dl-band > *{position:relative;z-index:2}
+.dl-band h2{font-size:38px;font-weight:800;letter-spacing:-1.1px;margin-bottom:12px}
+.dl-band p{color:rgba(255,255,255,.92);font-size:18px;margin-bottom:30px}
+.stores{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.store{display:inline-flex;align-items:center;gap:11px;background:#0b1220;color:#fff;border-radius:13px;padding:12px 20px}
+.store svg{width:24px;height:24px;fill:#fff}
+.store span{font-size:11px;color:#9fb0c4;line-height:1.2;text-align:left}
+.store b{font-size:16px;font-weight:700;display:block;color:#fff}
+.store small{display:block;font-size:9px;color:#ffb866;font-weight:700;letter-spacing:.5px}
+@media(max-width:880px){.dl-band{padding:44px 24px}.dl-band h2{font-size:28px}}
+
+/* FOOTER */
+footer{background:var(--night);color:#a8988a;padding:56px 0 30px;font-size:14px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;margin-bottom:38px}
+.foot-brand{display:flex;align-items:center;gap:10px;font-family:'Sora';font-weight:800;font-size:20px;color:#fff;margin-bottom:14px}
+.foot-brand .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--orange),var(--orange-dk));display:flex;align-items:center;justify-content:center;font-size:18px}
+.foot-grid p{color:#8a7d70;font-size:13.5px;max-width:300px}
+.foot-col h5{color:#fff;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.foot-col a{display:block;color:#a8988a;padding:6px 0;font-size:14px;transition:.15s}
+.foot-col a:hover{color:var(--orange)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:#736658}
+.foot-bottom a{color:#a8988a}.foot-bottom a:hover{color:var(--orange)}
+@media(max-width:880px){.foot-grid{grid-template-columns:1fr;gap:28px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="/" class="brand"><span class="logo">🛡️</span> Ma Vigi</a>
+    <div class="nav-links">
+      <a href="#dangers">Dangers</a>
+      <a href="#fonctions">Fonctionnalités</a>
+      <a href="#comment">Comment ça marche</a>
+      <a href="#urgence">Urgences</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#telecharger" class="btn btn-white" style="background:#fff;border:1px solid #f3e7d6">Télécharger</a>
+      <a href="#telecharger" class="btn btn-primary">Installer l'app</a>
+      <button class="nav-burger" onclick="document.getElementById('drawer').classList.add('open')" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<div class="drawer" id="drawer">
+  <div class="drawer-bg" onclick="document.getElementById('drawer').classList.remove('open')"></div>
+  <div class="drawer-panel">
+    <button class="drawer-close" onclick="document.getElementById('drawer').classList.remove('open')" aria-label="Fermer">
+      <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <a href="#dangers" onclick="document.getElementById('drawer').classList.remove('open')">Dangers</a>
+    <a href="#fonctions" onclick="document.getElementById('drawer').classList.remove('open')">Fonctionnalités</a>
+    <a href="#comment" onclick="document.getElementById('drawer').classList.remove('open')">Comment ça marche</a>
+    <a href="#urgence" onclick="document.getElementById('drawer').classList.remove('open')">Urgences</a>
+    <a href="#telecharger" onclick="document.getElementById('drawer').classList.remove('open')" class="btn btn-primary">Installer l'app</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Sécurité citoyenne · Côte d'Ivoire 🇨🇮</span>
+      <h1>Signalez le danger.<br><span class="hl">Protégez votre communauté.</span></h1>
+      <p class="sub">Ma Vigi est l'application mobile qui permet à chaque habitant de signaler en temps réel les situations dangereuses autour de lui — et d'alerter sa communauté en un instant.</p>
+      <div class="hero-cta">
+        <a href="#telecharger" class="btn btn-primary" style="font-size:15px;padding:14px 28px">📲 Télécharger l'app</a>
+        <a href="#comment" class="btn btn-ghost">Comment ça marche →</a>
+      </div>
+      <div class="hero-trust">
+        <span>🔒 <b>100% gratuit</b></span>
+        <span>📍 <b>Géolocalisé</b></span>
+        <span>⚡ <b>Alertes en temps réel</b></span>
+      </div>
+    </div>
+    <div class="phone-stage">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="mv-top">
+            <div class="t">🛡️ Ma Vigi <span style="font-size:12px">🇨🇮</span></div>
+            <div class="s">Réseau citoyen de vigilance</div>
+          </div>
+          <div class="mv-map">
+            <div class="mv-road" style="top:84px;left:-10px;right:-10px;height:14px;transform:rotate(-8deg)"></div>
+            <div class="mv-road" style="top:190px;left:64px;width:14px;height:250px"></div>
+            <div class="mv-road" style="top:270px;left:-10px;right:40px;height:12px;transform:rotate(5deg)"></div>
+            <div class="pin r pulse" style="top:124px;left:128px"><i>🔥</i></div>
+            <div class="pin o" style="top:220px;left:56px"><i>🗡️</i></div>
+            <div class="pin y" style="top:312px;left:158px"><i>🚗</i></div>
+            <div class="mv-card">
+              <div class="hd">
+                <div class="ico">🔥</div>
+                <div>
+                  <div class="ti">Incendie signalé</div>
+                  <div class="me">Cocody · il y a 2 min · 320 m</div>
+                </div>
+              </div>
+              <div class="bar"></div>
+              <div class="row"><span>⚠️ 12 signalements proches</span><span style="color:var(--red);font-weight:700">URGENT</span></div>
+            </div>
+            <div class="mv-fab">＋</div>
+          </div>
+          <div class="mv-tab">
+            <div class="tb on"><div class="d"></div>Carte</div>
+            <div class="tb"><div class="d"></div>Alertes</div>
+            <div class="tb"><div class="d"></div>Signaler</div>
+            <div class="tb"><div class="d"></div>Profil</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- DANGERS -->
+<section id="dangers">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Ce que vous pouvez signaler</div>
+      <h2>Quatre types de dangers</h2>
+      <p>En quelques secondes, alertez votre entourage sur ce qui se passe près de vous.</p>
+    </div>
+    <div class="danger-grid">
+      <div class="danger"><div class="em">🏠</div><h4>Cambriolage</h4><p>Effraction, vol</p></div>
+      <div class="danger"><div class="em">🗡️</div><h4>Agression</h4><p>Violence, attaque</p></div>
+      <div class="danger"><div class="em">🔥</div><h4>Incendie</h4><p>Feu, fumée</p></div>
+      <div class="danger"><div class="em">🚗</div><h4>Accident</h4><p>Route, collision</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FONCTIONS -->
+<section id="fonctions" style="background:var(--bg3)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Fonctionnalités</div>
+      <h2>Pensée pour réagir vite</h2>
+      <p>Tout ce dont vous avez besoin pour rester informé et en sécurité.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ic">📍</div><h4>Signalement géolocalisé</h4><p>Signalez un danger avec photo et localisation précise, en quelques secondes seulement.</p></div>
+      <div class="feat"><div class="ic">🗺️</div><h4>Carte en temps réel</h4><p>Visualisez tous les signalements actifs autour de vous sur une carte vivante et claire.</p></div>
+      <div class="feat"><div class="ic">🔔</div><h4>Alertes de proximité</h4><p>Recevez une notification dès qu'un danger est signalé près de votre position.</p></div>
+      <div class="feat"><div class="ic">📞</div><h4>Numéros d'urgence</h4><p>Accédez en un tap aux secours officiels : pompiers, police, SAMU, défense nationale.</p></div>
+      <div class="feat"><div class="ic">🔒</div><h4>Sécurisé & privé</h4><p>Authentification protégée et respect de vos données. Vous gardez le contrôle.</p></div>
+      <div class="feat"><div class="ic">🤝</div><h4>Communauté citoyenne</h4><p>Chaque signalement aide vos voisins. Ensemble, nous veillons les uns sur les autres.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMENT -->
+<section id="comment">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Comment ça marche</div>
+      <h2>Trois étapes, c'est tout</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4>Repérez un danger</h4><p>Vous êtes témoin d'un cambriolage, d'un incendie, d'une agression ou d'un accident.</p></div>
+      <div class="step"><div class="n">2</div><h4>Signalez en 1 tap</h4><p>Choisissez le type, ajoutez une photo. Votre position est détectée automatiquement.</p></div>
+      <div class="step"><div class="n">3</div><h4>La communauté est alertée</h4><p>Les personnes à proximité reçoivent l'alerte instantanément et peuvent réagir.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCE -->
+<section id="urgence" style="background:var(--bg3)">
+  <div class="wrap">
+    <div class="urg">
+      <h3>📞 Numéros d'urgence officiels — Côte d'Ivoire</h3>
+      <p>Accessibles directement depuis l'application, à tout moment.</p>
+      <div class="urg-grid">
+        <div class="urg-num"><b>180</b><span>Sapeurs-Pompiers</span></div>
+        <div class="urg-num"><b>110</b><span>Police Secours</span></div>
+        <div class="urg-num"><b>185</b><span>SAMU</span></div>
+        <div class="urg-num"><b>199</b><span>Défense Nationale</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TELECHARGER -->
+<section id="telecharger">
+  <div class="wrap">
+    <div class="dl-band">
+      <h2>Rejoignez Ma Vigi</h2>
+      <p>L'application arrive bientôt sur Android et iOS. Soyez parmi les premiers à veiller.</p>
+      <div class="stores">
+        <span class="store">
+          <svg viewBox="0 0 24 24"><path d="M3 3v18l15-9L3 3z"/></svg>
+          <span><small>BIENTÔT SUR</small><b>Google Play</b></span>
+        </span>
+        <span class="store">
+          <svg viewBox="0 0 24 24"><path d="M16.5 1c-1.3.1-2.8.9-3.7 2-0.8.9-1.5 2.3-1.2 3.6 1.4.1 2.8-.7 3.6-1.8.8-1 1.4-2.4 1.3-3.8zM21 17.3c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.4-4.1 3.4-1.5 0-1.9-1-4-1-2 0-2.5 1-4 1-1.7 0-3-1.7-4-3.2C-1 16-1.4 9.6 1.9 6.6c1-1 2.4-1.6 3.7-1.6 1.5 0 2.5 1 3.8 1 1.2 0 1.9-1 3.8-1 1.1 0 2.3.6 3.2 1.6-2.8 1.5-2.3 5.5.6 6.7z"/></svg>
+          <span><small>BIENTÔT SUR</small><b>App Store</b></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><span class="logo">🛡️</span> Ma Vigi</div>
+        <p>Le réseau citoyen de vigilance en Côte d'Ivoire. Signalez les dangers, protégez votre communauté. Une application éditée par EGSCI SARL.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Navigation</h5>
+        <a href="#dangers">Dangers</a>
+        <a href="#fonctions">Fonctionnalités</a>
+        <a href="#comment">Comment ça marche</a>
+        <a href="#urgence">Numéros d'urgence</a>
+      </div>
+      <div class="foot-col">
+        <h5>Légal & contact</h5>
+        <a href="/confidentialite.html">Politique de confidentialité</a>
+        <a href="/cgu.html">Conditions d'utilisation</a>
+        <a href="mailto:Mavigi@egs.ci">Mavigi@egs.ci</a>
+        <a href="https://egs.ci" target="_blank" rel="noopener">EGS Côte d'Ivoire ↗</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 EGSCI SARL — Ma Vigi. Tous droits réservés.</span>
+      <span>Édité par <a href="https://egs.ci" target="_blank" rel="noopener">EGSCI</a> · Abidjan, Côte d'Ivoire 🇨🇮</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
